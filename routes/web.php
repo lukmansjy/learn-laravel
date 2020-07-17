@@ -17,9 +17,14 @@ Route::get('/', function () {
     return view('home');
 });
 
-Route::get('user', function(){
-    $data = array(
-        'name'=> 'Lukman'
-    );
-    return view('user', $data);
+Route::get('contact', function(){
+    return view('contact');
+});
+
+Route::get('about', function(){
+    return view('about');
+});
+
+Route::get('login', function(){
+    return view('login');
 });

@@ -3,9 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    
+    <style>
+        body{
+            background: orange;
+        }
+    </style>
 </head>
 <body>
-    <p>Halo nama saya {{ $name }}</p>
+    @include('layouts/navigation')
+    
+    @yield('content')
 </body>
 </html>
