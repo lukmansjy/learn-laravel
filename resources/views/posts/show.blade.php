@@ -1,9 +1,10 @@
 @extends('layouts/app')
 
-@section('title', 'Post')
+@section('title', $post->title )
 
 @section('content')
     <div class="container">
-        {{ $slug }}
+        <h1>{{ $post->title }}</h1>
+        <p>{{ $post->body }}</p>
     </div>
 @endsection
