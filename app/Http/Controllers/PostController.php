@@ -24,28 +24,45 @@ class PostController extends Controller
         return view('posts.create');
     }
 
-    public function store(Request $request){
-        // # Create data model 1
-        // $post = new Post;
-        // $post->title = $request->title;
-        // $post->slug = Str::slug($request->title);
-        // $post->body = $request->body;
+    // public function store(Request $request){
+    //     // vaidation
+    //     $this->validate($request, [
+    //         'title' => 'required|min:3|max:110',
+    //         'body' => 'required'
+    //     ]);
 
-        // $post->save();
+    //     // # Create data model 1
+    //     // $post = new Post;
+    //     // $post->title = $request->title;
+    //     // $post->slug = Str::slug($request->title);
+    //     // $post->body = $request->body;
 
-        // # create data model 2
-        Post::create([
-            'title' => $request->title,
-            'slug' => Str::slug($request->title),
-            'body' => $request->body
+    //     // $post->save();
+
+    //     // # create data model 2
+    //     Post::create([
+    //         'title' => $request->title,
+    //         'slug' => Str::slug($request->title),
+    //         'body' => $request->body
+    //     ]);
+
+    //     // # create data model 3 (Not recommended)
+    //     // $post = $request->all();
+    //     // $post['slug'] = Str::slug($request->title);
+    //     // Post::create($post);
+
+    //     return redirect()->to('post');
+
+    // }
+
+    // store clean code
+    public function store(){
+        $attr = request()->validate([
+            'title' => 'required|min:3|max:110',
+            'body' => 'required'
         ]);
-
-        // # create data model 3 (Not recommended)
-        // $post = $request->all();
-        // $post['slug'] = Str::slug($request->title);
-        // Post::create($post);
-
+        $attr['slug'] = Str::slug(request('title'));
+        Post::create($attr);
         return redirect()->to('post');
-
     }
 }
