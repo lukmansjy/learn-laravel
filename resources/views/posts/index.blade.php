@@ -2,11 +2,19 @@
 
 @section('content')
 <div class="container">
-    <div class="row">
-        <div class="col-md-8">
+    <div class="d-flex justify-content-between">
+        <div>
             <h4>All Post</h4>
-            @foreach ($posts as $post)    
-            <div class="card mb-3">
+        </div>
+        <div>
+            <a href="/post/create" class="btn btn-primary">New Post</a>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        @foreach ($posts as $post)
+        <div class="col-md-4">
+            <div class="card mb-4">
                 <div class="card-header">
                     {{ $post->title }}
                 </div>
@@ -21,9 +29,11 @@
                     Published on {{ $post->created_at->diffForHumans() }}
                 </div>
             </div>
-            @endforeach
-            {{ $posts->links() }}
         </div>
+        @endforeach
+    </div>
+    <div class="d-flex justify-content-center">
+        {{ $posts->links() }}
     </div>
 </div>
 @endsection
