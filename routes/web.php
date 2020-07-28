@@ -20,6 +20,8 @@ Route::get('post/create', 'PostController@create');
 Route::post('post/store', 'PostController@store');
 
 Route::get('post/{post:slug}', 'PostController@show');
+Route::get('post/{post:slug}/edit', 'PostController@edit');
+Route::patch('post/{post:slug}/edit', 'PostController@update');
 
 
 Route::get('contact', function(){
