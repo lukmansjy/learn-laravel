@@ -4,7 +4,11 @@
 <div class="container">
     <div class="d-flex justify-content-between">
         <div>
+            @isset($category)
+            <h4>Posts Category {{ $category->name }}</h4>
+            @else
             <h4>All Post</h4>
+            @endisset
         </div>
         <div>
             <a href="/post/create" class="btn btn-primary">New Post</a>
