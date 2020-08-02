@@ -5,10 +5,14 @@
     <div class="d-flex justify-content-between">
         <div>
             @isset($category)
-            <h4>Posts Category {{ $category->name }}</h4>
-            @else
-            <h4>All Post</h4>
+                <h4>Posts Category {{ $category->name }}</h4>
             @endisset
+            @isset($tag)
+                <h4>Posts Tag {{ $tag->name }}</h4>
+            @endisset
+            @if (!isset($category) && !isset($tag))
+                <h4>All Post</h4>
+            @endif
         </div>
         <div>
             <a href="/post/create" class="btn btn-primary">New Post</a>
