@@ -9,6 +9,11 @@ use Illuminate\Support\Str;
 
 class PostController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->middleware('auth')->except(['index', 'show']);
+    // }
+
     public function index(){
         // $posts = Post::get(['slug', 'title', 'body']); // Get all
         // $posts = Post::take(3)->get(['slug', 'title', 'body']); // get 3

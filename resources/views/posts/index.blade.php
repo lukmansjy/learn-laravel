@@ -15,7 +15,11 @@
             @endif
         </div>
         <div>
-            <a href="/post/create" class="btn btn-primary">New Post</a>
+            @if (Auth::check())
+                <a href="{{ route('post.create') }}" class="btn btn-primary">New Post</a>
+            @else
+                <a href="{{ route('login') }}" class="btn btn-primary">Login to Create Post</a>
+            @endif
         </div>
     </div>
     <hr>
@@ -38,7 +42,9 @@
                         Published on {{ $post->created_at->diffForHumans() }}
                     </div>
                     <div>
-                        <a href="post/{{ $post->slug }}/edit" class="btn btn-success btn-sm">Edit</a>
+                        @auth
+                            <a href="post/{{ $post->slug }}/edit" class="btn btn-success btn-sm">Edit</a>
+                        @endauth
                     </div>
                 </div>
             </div>
